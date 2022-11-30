@@ -1,0 +1,5 @@
+@import "@primer/css/dist/primer.css";
+
+.hidden {
+  display: none;
+}

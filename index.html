@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html
+  data-color-mode="auto"
+  data-light-theme="light"
+  data-dark-theme="dark"
+  lang="pt-BR"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabSearch - A TabNews Search</title>
+    <meta name="title" content="TabSearch - A TabNews Search" />
+    <meta
+      name="description"
+      content="Com o TabSearch, você pode pesquisar Tabs através da API do TabNews."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body
+    style="min-height: 100vh"
+    class="d-flex flex-column flex-justify-center flex-items-center p-5"
+  >
+    <div class="blankslate">
+      <img class="blankslate-image" src="/tab.svg" alt="&copy; 2022 TabNews" />
+      <h3 class="blankslate-heading">TabSearch</h3>
+      <p>Pesquise Tabs através da API do TabNews.</p>
+    </div>
+
+    <div style="max-width: 960px" class="Box width-full">
+      <div
+        class="Box-header d-flex flex-justify-center flex-items-center col-12"
+      >
+        <input
+          type="search"
+          id="searchbar"
+          class="form-control width-full col-6 col-sm-5"
+          placeholder="Pesquisar no TabNews"
+        />
+
+        <select
+          id="contenttype"
+          class="form-select ml-2 col-6 col-sm-7"
+          aria-label="Preference"
+        >
+          <option value="relevant" selected>Relevantes</option>
+          <option value="new">Recentes</option>
+          <option value="old">Mais Antigo</option>
+        </select>
+      </div>
+
+      <div class="Box-body">
+        <h3 id="boxbody" class="Box-title m-2">
+          Resultados
+          <span id="resultscount" class="Counter Counter--gray">0</span>
+        </h3>
+
+        <span id="loading" class="Label m-3"
+          ><span>Loading</span><span class="AnimatedEllipsis"></span
+        ></span>
+
+        <div
+          style="max-height: 550px"
+          id="tabcontents"
+          class="overflow-y-scroll"
+        >
+          <div class="Box-row hidden">
+            <a
+              class="no-underline"
+              noopener
+              noreferrer
+              href="#"
+              target="_blank"
+            >
+              <h3 class="Box-title f3 color-fg-accent">XXXXXXX</h3>
+            </a>
+            <p class="f6 mt-2 color-fg-subtle">
+              <strong>
+                <a
+                  class="no-underline color-fg-subtle"
+                  noopener
+                  noreferrer
+                  href="#"
+                  target="_blank"
+                  >XXXXXXX
+                </a>
+              </strong>
+              • X tabcoins
+            </p>
+          </div>
+        </div>
+
+        <div id="noresults" class="blankslate hidden">
+          <h3 class="blankslate-heading">Sem Resultados</h3>
+          <p>
+            "<span class="text-bold" id="searchterm"></span>" não encontrado.
+            Procure na
+            <span id="noresultsnextpage" class="Link">próxima página</span>.
+          </p>
+        </div>
+
+        <div id="error" class="blankslate hidden">
+          <h3 class="blankslate-heading">Algo deu errado</h3>
+          <p id="errormessage">{{errorMessage}}</p>
+        </div>
+      </div>
+      <div
+        class="Box-footer d-flex flex-justify-center flex-items-center text-small"
+      >
+        <span id="previousbtn" class="Link">Anterior</span>
+        <span class="color-fg-subtle mx-5">
+          Página <span class="text-bold" id="page">X</span> •
+          <span class="text-bold" id="category">XXXXXXX</span>
+        </span>
+        <span id="nextbtn" class="Link">Próximo</span>
+      </div>
+    </div>
+
+    <span class="text-small color-fg-subtle mt-5">&copy; 2022 Iago Souza</span>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
