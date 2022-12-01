@@ -44,7 +44,11 @@ export function hasError(error) {
 
 export function searchTabs(term) {
   const slugify = (str) => {
-    return str.toLowerCase().normalize("NFD").replace(/\s/g, "-");
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Mn}/gu, "")
+      .replace(/\s/g, "-");
   };
 
   const sluggedTerm = slugify(term);
