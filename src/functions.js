@@ -42,7 +42,15 @@ export function hasError(error) {
   document.getElementById("errormessage").innerText = error;
 }
 
-export function searchTabs(term) {
+export function searchTabs(term, filterBy) {
+  if (filterBy == "slug") {
+    filterBySlug(term);
+  }
+
+  // "Filter by Author" goes here.
+}
+
+function filterBySlug(term) {
   const slugify = (str) => {
     return str
       .toLowerCase()
@@ -53,9 +61,9 @@ export function searchTabs(term) {
 
   const sluggedTerm = slugify(term);
 
-  const allTabs = Array.from(document.querySelectorAll("[data-slug]"));
+  const allRenderedTabs = Array.from(document.querySelectorAll("[data-slug]"));
 
-  allTabs.forEach((tab) => {
+  allRenderedTabs.forEach((tab) => {
     let tabSlug = tab.getAttribute("data-slug");
 
     if (tabSlug.indexOf(sluggedTerm) == -1) {
@@ -67,7 +75,7 @@ export function searchTabs(term) {
     }
   });
 
-  const availableTabs = allTabs.filter((tab) => {
+  const availableTabs = allRenderedTabs.filter((tab) => {
     return !tab.classList.contains("hidden");
   });
 

@@ -13,7 +13,7 @@ import {
   renderTabs,
   previousPage,
   nextPage,
-} from "./src/operators.js";
+} from "./src/utilities.js";
 
 const contentType = document.getElementById("contenttype");
 const searchBar = document.getElementById("searchbar");
@@ -33,7 +33,7 @@ contentType.addEventListener("change", (e) => {
 
     renderTabs(newPosts, () => {
       if (searchBar.value.length != 0) {
-        searchTabs(searchBar.value);
+        searchTabs(searchBar.value, "slug");
       }
 
       enableOperators();
@@ -42,7 +42,7 @@ contentType.addEventListener("change", (e) => {
 });
 
 searchBar.addEventListener("input", (e) => {
-  searchTabs(e.target.value);
+  searchTabs(e.target.value, "slug");
 });
 
 noResultsNextPage.addEventListener("click", goToNextPage);
@@ -63,7 +63,7 @@ function goToPreviousPage() {
 
         renderTabs(newPosts, () => {
           if (searchBar.value.length != 0) {
-            searchTabs(searchBar.value);
+            searchTabs(searchBar.value, "slug");
           }
 
           enableOperators();
@@ -84,7 +84,7 @@ function goToNextPage() {
 
       renderTabs(newPosts, () => {
         if (searchBar.value.length != 0) {
-          searchTabs(searchBar.value);
+          searchTabs(searchBar.value, "slug");
         }
 
         enableOperators();
