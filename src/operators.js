@@ -45,6 +45,7 @@ export function renderTabs(contents, callback) {
             noopener
             noreferrer
             href="https://www.tabnews.com.br/${content.owner_username}/"
+            target="_blank"
           >
             ${content.owner_username}
           </a>
